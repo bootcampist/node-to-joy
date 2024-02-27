@@ -1,0 +1,105 @@
+/* #779f9f */
+/* #e1e0df */
+/* #fdfdfd */
+/* #cbcaca */
+/* #737276 */
+/* #fa903f */
+/* #222630 */
+
+*{
+    padding:0;
+    margin: 0;
+    /* color: ; */
+
+}
+
+body{
+    background-color: #e1e0df;
+    color: #737276;
+    font-family: 'Comfortaa'
+}
+
+.team-heading {
+    background-color: #e1e0df;
+    color: #779f9f;
+    color: rgb(34, 38, 48,0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    width: 12%;
+}
+
+.company {
+    color: rgb(252, 252, 252, 0.7);
+    font-weight: 900;
+    font-size: 2.5em;
+}
+
+h4 {
+    color: rgb(250, 143, 61, 0.8);
+}
+
+h1 {
+    font-size: 10vh;
+    /* font-family: 'Bebas Neue'; */
+}
+
+
+
+
+.employee-card{
+    border-radius: 9px;
+    border: none;
+    background-color: #fdfdfd;
+    /* background-color: transparent; */
+    margin: 10px;
+    box-shadow: rgba(0, 0, 0, 0.3) -2px 5px 6px 0px;
+    width: 30%;
+}
+
+.employee-card:hover{
+    box-shadow: rgba(0, 0, 0, 0.5) -2px 2px 8px 0px;
+}
+
+.card-header {
+    background-color: #fdfdfd;
+    font-family: 'Dosis';
+}
+
+.portrait {
+    width:100%;
+    border-radius: 2px;
+}
+
+.grey {
+    border-radius: 10px;
+    color:#cbcaca;
+    font-family: 'Manjari';
+}
+
+h2 {
+    color: #fa903f ;
+}
+
+.list-group-item, .card-header {
+    border: none;
+}
+
+.list-group-item {
+    padding-top: 0px;
+    padding-bottom: 10px;
+}
+
+a, a:visited {
+    color: #fa903f;
+}
+
+a:hover {
+    text-decoration: none;
+    color: #779f9f;
+}
