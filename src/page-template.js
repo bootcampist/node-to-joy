@@ -1,3 +1,8 @@
+// Example Company Information
+const logo = 'logo.svg';
+const company = 'nodeify';
+const slogan = 'stronger together';
+
 // creates the team
 const generateTeam = team => {
 
@@ -83,6 +88,7 @@ const generateTeam = team => {
 }
 
 // exports function to generate entire page
+// includes the font and company logo and slogan sections
 module.exports = team => {
 
     return `
@@ -108,8 +114,9 @@ module.exports = team => {
     <div class="container-fluid">
         <div class="row">
             <div class="col-12 jumbotron mb-3 team-heading">
-                <img src="./assets/images/logo.svg" class="logo">
-                 <h4 class="slogan text-center">stronger together</h4>
+                <img src="./assets/images/${logo}" class="logo">
+                <span class="company text-center">${company}</span>
+                 <h4 class="slogan text-center">${slogan}</h4>
                  <h1 class="text-center">meet the team</h1>
                  </div>
         </div>

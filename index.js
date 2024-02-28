@@ -67,6 +67,7 @@ let addMessage = `Enter the details of ${teamMember}.`
 const allEmployees =[];
 
 // TODO: Write Code to gather information about the development team members, and render the HTML file.
+// Prompt Team Manager for the Team Manager's details
 function initialise () {
     console.log(startMessage);
     inquirer
@@ -80,8 +81,9 @@ function initialise () {
     });
 }
 
+// Menu section to add an engineer or intern or generate team profile
 function menu () {
-    const menuMessage = `Welcome, ${teamManager || 'Team Manager'}!`;
+    const menuMessage = `Hello, ${teamManager || 'Team Manager'}!`;
     console.log(menuMessage);
     inquirer
     .prompt(menuOptions)
@@ -100,6 +102,7 @@ function menu () {
     })
 }
 
+// Function to add an engineer to the team profile
 function addEngineer (){
     teamMember = 'the engineer';
     addMessage = `Enter the details of ${teamMember}.`
@@ -116,6 +119,7 @@ function addEngineer (){
     })
 }
 
+// Function to add an intern to the team profile
 function addIntern (){
     teamMember = 'the intern';
     addMessage = `Enter the details of ${teamMember}.`
@@ -131,9 +135,10 @@ function addIntern (){
     });    
 }
 
+// Function to generate the team profile
 function generateFile () {
     const theHTML = render(allEmployees);
-    fs.writeFile('./team.html', theHTML, (err)=>{
+    fs.writeFile('./index.html', theHTML, (err)=>{
         if (err){
             console.log('There was an error creating your file.', err);
         } else{
