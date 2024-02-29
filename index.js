@@ -1,6 +1,7 @@
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
+const Company = require("./lib/Company");
 const inquirer = require("inquirer");
 const path = require("path");
 const fs = require("fs");
@@ -12,7 +13,7 @@ const render = require("./src/page-template.js");
 
 //Global Variables
 let teamMember = 'you';
-const startMessage = 'This section is to be filled in by the Team Manager.'
+const startMessage = 'This section is to be filled in by the Team Manager. Make sure all photos are added to the images folder before continuing.'
 let questions = [
                         {
                             type: 'input',
@@ -43,12 +44,33 @@ let questions = [
                             type: 'input',
                             name: 'school',
                             message: `School Name:`
-                        }
+                        },
+                        {
+                            type: 'input',
+                            name: 'logo',
+                            message: `Logo file name (include the file extension):`
+                        },
+                        {
+                            type: 'input',
+                            name: 'favicon',
+                            message: `Favicon file name (include the file extension):`
+                        },
+                        {
+                            type: 'input',
+                            name: 'motto',
+                            message: `Company motto:`
+                        },
+                        {
+                            type: 'input',
+                            name: 'photo',
+                            message: `Photo file name (include the file extension):`
+                        },
 ]
 
-const managerQuestions = [questions[0], questions[1], questions[2], questions[3]];
-const engineerQuestions = [questions[0], questions[1], questions[2], questions[4]];
-const internQuestions = [questions[0], questions[1], questions[2], questions[5]];
+const managerQuestions = [questions[0], questions[1], questions[2], questions[3], questions[9]];
+const engineerQuestions = [questions[0], questions[1], questions[2], questions[4], questions[9]];
+const internQuestions = [questions[0], questions[1], questions[2], questions[5], questions[9]];
+const companyQuestions = [questions[0], questions[6], questions[7], questions[8]];
 
 let managerAnswers=[];
 let teamManager;
@@ -74,11 +96,26 @@ function initialise () {
     .prompt(managerQuestions)
     .then((answers)=>{
         managerAnswers.push(answers);
-        const manager = new Manager(answers.name, answers.employeeID, answers.email, answers.officeNum);
+        const manager = new Manager(answers.name, answers.employeeID, answers.email, answers.officeNum, answers.photo);
         allEmployees.push(manager);
         teamManager = answers.name;
-        menu();
+        addCompany();
     });
+}
+
+function addCompany() {
+    teamMember = 'the company';
+    addMessage = `Enter the details of ${teamMember}.`
+    console.log(addMessage);
+    inquirer
+    .prompt(companyQuestions)
+    .then((coAnswers)=>{
+        const company = new Company(coAnswers.name, coAnswers.logo, coAnswers.favicon, coAnswers.motto);
+        allEmployees.push(company);
+        console.log(`Added ${coAnswers.name} information!`);
+        console.log(allEmployees);
+        menu();
+    })
 }
 
 // Menu section to add an engineer or intern or generate team profile
@@ -111,7 +148,7 @@ function addEngineer (){
     inquirer
     .prompt(engineerQuestions)
     .then((enAnswers)=>{
-        const engineer = new Engineer(enAnswers.name, enAnswers.employeeID, enAnswers.email, enAnswers.github);
+        const engineer = new Engineer(enAnswers.name, enAnswers.employeeID, enAnswers.email, enAnswers.github, enAnswers.photo);
         engineerArray.push(engineer);
         console.log(`Added ${enAnswers.name}!`);
         console.log(engineerArray);
@@ -127,7 +164,7 @@ function addIntern (){
     inquirer
     .prompt(internQuestions)
     .then((inAnswers)=>{
-        const intern = new Intern(inAnswers.name, inAnswers.employeeID, inAnswers.email, inAnswers.school);
+        const intern = new Intern(inAnswers.name, inAnswers.employeeID, inAnswers.email, inAnswers.school, inAnswers.photo);
         internArray.push(intern);
         console.log(`Added ${inAnswers.name}!`);
         console.log(internArray);

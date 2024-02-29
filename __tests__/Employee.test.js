@@ -46,3 +46,10 @@ test("getRole() should return \"Employee\"", () => {
   const e = new Employee("Alice", 1, "test@test.com");
   expect(e.getRole()).toBe(testValue);
 });
+
+// Test for the profile photo
+test("Can get photo via getPhoto()", () => {
+  const testValue = "Alice.png";
+  const e = new Employee("Alice", 1, "test@test.com", testValue);
+  expect(e.getPhoto()).toBe(testValue);
+});

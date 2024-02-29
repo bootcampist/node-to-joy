@@ -1,8 +1,3 @@
-// Example Company Information
-const logo = 'logo.svg';
-const company = 'nodeify';
-const slogan = 'stronger together';
-
 // creates the team
 const generateTeam = team => {
 
@@ -10,7 +5,7 @@ const generateTeam = team => {
     const generateManager = manager => {
         return `
         <div class="card employee-card">
-            <img src="./assets/images/${manager.getName()}.png" class="portrait" alt="a picture of the Manager">
+            <img src="./assets/images/${manager.getPhoto()}" class="portrait" alt="A photo of ${manager.getName()}, the ${manager.getRole()} at ${team[1].name}">
         <div class="card-header">
             <h2 class="card-title">${manager.getName()}</h2>
             <h3 class="card-title grey"><i class="fas fa-mug-hot mr-2"></i>${manager.getRole()}</h3>
@@ -30,7 +25,7 @@ const generateTeam = team => {
     const generateEngineer = engineer => {
         return `
         <div class="card employee-card">
-        <img src="./assets/images/${engineer.getName()}.png" class="portrait">
+        <img src="./assets/images/${engineer.getPhoto()}" class="portrait" alt="A photo of ${engineer.getName()}, an ${engineer.getRole()} at ${team[1].name}">
     <div class="card-header">
         <h2 class="card-title">${engineer.getName()}</h2>
         <h3 class="card-title grey"><i class="fas fa-glasses mr-2"></i>${engineer.getRole()}</h3>
@@ -50,7 +45,7 @@ const generateTeam = team => {
     const generateIntern = intern => {
         return `
         <div class="card employee-card">
-        <img src="./assets/images/${intern.getName()}.png" class="portrait">
+        <img src="./assets/images/${intern.getPhoto()}" class="portrait" alt="A photo of ${intern.getName()}, an ${intern.getRole()} at ${team[1].name}">
     <div class="card-header">
         <h2 class="card-title">${intern.getName()}</h2>
         <h3 class="card-title grey"><i class="fas fa-user-graduate mr-2"></i>${intern.getRole()}</h3>
@@ -82,7 +77,6 @@ const generateTeam = team => {
         .map(intern => generateIntern(intern))
         .join("")
     );
-
     return html.join("");
 
 }
@@ -100,7 +94,7 @@ module.exports = team => {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Meet the Team</title>
-    <link rel="icon" type="image/x-icon" href="./assets/images/favicon.svg"/>
+    <link rel="icon" type="image/x-icon" href="./assets/images/${team[1].favicon}"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Comfortaa:wght@300;400;600;700&family=Dosis:wght@400;500;600&family=Manjari:wght@100;400;700&display=swap" rel="stylesheet">
@@ -114,9 +108,9 @@ module.exports = team => {
     <div class="container-fluid">
         <div class="row">
             <div class="col-12 jumbotron mb-3 team-heading">
-                <img src="./assets/images/${logo}" class="logo">
-                <span class="company text-center">${company}</span>
-                 <h4 class="slogan text-center">${slogan}</h4>
+                <img src="./assets/images/${team[1].logo}" class="logo">
+                <span class="company text-center">${team[1].name}</span>
+                 <h4 class="slogan text-center">${team[1].motto}</h4>
                  <h1 class="text-center">meet the team</h1>
                  </div>
         </div>
