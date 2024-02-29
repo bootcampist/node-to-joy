@@ -14,6 +14,7 @@ The Profile Generator is a Node application that allows a Team Manager to genera
  
 An example of the completed profile can be seen below, created for an imaginary company. The logo and profile pictures were generated using Midjourney 6.0 for the purposes of the example.
 [https://bootcampist.github.io/node-to-joy/](https://bootcampist.github.io/node-to-joy/)
+![screenshot](https://github.com/bootcampist/node-to-joy/assets/152117886/92ecda3f-2acf-4f25-8f89-83f5e5714144)
 
 ## Installation
 N/A
